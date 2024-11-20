@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>Modern Dashboard</title>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="menu-icon">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <!-- Header -->
+      <header class="header">
+        <div class="header__search">
+          <input type="text" placeholder="Search..." />
+          <i class="fas fa-search"></i>
+        </div>
+        <div class="header__avatar">
+          <i class="fas fa-user-circle"></i>
+        </div>
+      </header>
+
+      <!-- Sidebar Navigation -->
+      <aside class="sidenav">
+        <div class="sidenav__close-icon">
+          <i class="fas fa-times"></i>
+        </div>
+        <ul class="sidenav__list">
+          <li class="sidenav__list-item">
+            <i class="fas fa-home"></i> Dashboard
+          </li>
+          <li class="sidenav__list-item">
+            <i class="fas fa-chart-line"></i> Analytics
+          </li>
+          <li class="sidenav__list-item">
+            <i class="fas fa-folder-open"></i> Projects
+          </li>
+          <li class="sidenav__list-item">
+            <i class="fas fa-cog"></i> Settings
+          </li>
+          <li class="sidenav__list-item">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main">
+        <!-- Overview Section -->
+        <div class="main-header">
+          <div class="main-header__heading">Welcome, Bianca!</div>
+          <div class="main-header__updates">Your Dashboard Overview</div>
+        </div>
+        <div class="main-overview">
+          <div class="overviewcard">
+            <h3>Total Sales</h3>
+            <p>$10,000</p>
+          </div>
+          <div class="overviewcard">
+            <h3>New Users</h3>
+            <p>1,250</p>
+          </div>
+          <div class="overviewcard">
+            <h3>Projects</h3>
+            <p>18 Active</p>
+          </div>
+          <div class="overviewcard">
+            <h3>Performance</h3>
+            <p>96%</p>
+          </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="main-cards">
+          <div class="card">
+            <h3>Sales Chart</h3>
+            <canvas id="salesChart"></canvas>
+          </div>
+          <div class="card">
+            <h3>Users Growth</h3>
+            <canvas id="usersChart"></canvas>
+          </div>
+          <div class="card">
+            <h3>Active Projects</h3>
+            <canvas id="projectsChart"></canvas>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>&copy; 2024 Dashboard. All Rights Reserved.</p>
+        <p>Made with <i class="fas fa-heart"></i> by Your Name</p>
+      </footer>
+    </div>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const salesChart = new Chart(document.getElementById('salesChart'), {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+          datasets: [{
+            label: 'Sales',
+            data: [5000, 10000, 7500, 12000, 15000],
+            backgroundColor: 'rgba(79, 209, 197, 0.2)',
+            borderColor: '#4fd1c5',
+            borderWidth: 2,
+          }],
+        },
+        options: { responsive: true },
+      });
+
+      const usersChart = new Chart(document.getElementById('usersChart'), {
+        type: 'bar',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+          datasets: [{
+            label: 'New Users',
+            data: [200, 400, 600, 800, 1200],
+            backgroundColor: '#4fd1c5',
+          }],
+        },
+        options: { responsive: true },
+      });
+
+      const projectsChart = new Chart(document.getElementById('projectsChart'), {
+        type: 'doughnut',
+        data: {
+          labels: ['In Progress', 'Completed', 'On Hold'],
+          datasets: [{
+            data: [12, 5, 3],
+            backgroundColor: ['#4fd1c5', '#1a202c', '#e2e8f0'],
+          }],
+        },
+        options: { responsive: true },
+      });
+    </script>
+  </body>
+</html>
